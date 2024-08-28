@@ -68,23 +68,20 @@ class ResultScreen extends StatelessWidget {
                     if (controller.isObjectDetected.value) {
                       return Stack(
                         children: [
-                          Positioned(
-                            left: controller.x.value * factorX,
-                            top:
-                                controller.y.value * factorY + pady,
-                            width:
-                                controller.w.value * factorX,
-                            height:
-                                controller.h.value * factorY,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.green,
-                                  width: 3,
-                                ),
-                              ),
-                            ),
-                          ),
+                          // Positioned(
+                          //   left: controller.x.value * factorX,
+                          //   top: controller.y.value * factorY + pady,
+                          //   width: controller.w.value * factorX,
+                          //   height: controller.h.value * factorY,
+                          //   child: Container(
+                          //     decoration: BoxDecoration(
+                          //       border: Border.all(
+                          //         color: Colors.green,
+                          //         width: 3,
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
                           Positioned(
                             top: 0,
                             left: 0,
@@ -123,7 +120,7 @@ class ResultScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          if (controller.label.value == '우수') // "woosu"일 경우에만 버튼 표시
+                          if (controller.label.value == '우수') // "우수"일 경우에만 버튼 표시
                             Positioned(
                               bottom: 20,
                               right: 20,
@@ -141,10 +138,40 @@ class ResultScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
+                          if (controller.label.value == 'others') // "others"일 경우에만 버튼 표시
+                            Positioned(
+                              bottom: 20,
+                              right: 20,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop(); // 이전 화면으로 돌아가기
+                                },
+                                child: Text('돌아가기'),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.red, // 버튼 색상
+                                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                                  textStyle: TextStyle(fontSize: 16),
+                                ),
+                              ),
+                            ),
                         ],
                       );
                     } else {
-                      return Container();
+                      // 맨홀이 탐지되지 않은 경우 하단에 텍스트 표시
+                      return Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text(
+                            '맨홀이 탐지되지 않았습니다.',
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      );
                     }
                   }),
                 ],

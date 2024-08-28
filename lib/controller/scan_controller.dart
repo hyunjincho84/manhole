@@ -62,7 +62,7 @@ class ScanController extends GetxController {
   initVisionModel() async {
     try {
       await vision.loadYoloModel(
-        modelPath: "assets/detect_tflite/detect_s_float32.tflite",
+        modelPath: "assets/detect_s_float32.tflite",
         labels: "assets/labels.txt",
         modelVersion: "yolov8",
         numThreads: 1,

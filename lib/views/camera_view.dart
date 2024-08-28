@@ -20,7 +20,7 @@ class CameraView extends StatelessWidget {
     controller.context = context;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Object Detection'),
+        title: Text('Manhole Detector'),
         actions: [
           IconButton(
             icon: Icon(Icons.photo),
