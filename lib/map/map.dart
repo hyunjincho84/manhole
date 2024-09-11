@@ -199,6 +199,12 @@ class _MapScreenState extends State<MapScreen> {
 
     //설정된 위도, 경도 입력
     _center = LatLng(37.51552, 127.04705);
+    //실제 현재 위치
+    // _currentPosition = await Geolocator.getCurrentPosition();
+    // setState(() {
+    //   _center = LatLng(_currentPosition!.latitude, _currentPosition!.longitude);
+    // });
+
 
     //실제 현재 위치
     _fetchNearbyManholes();
